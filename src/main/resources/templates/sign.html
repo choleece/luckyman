@@ -55,10 +55,6 @@
                             <input type="text" id="code" class="form-control" width="50%" name="code" placeholder="验证码" autocomplete="off" aria-required="true">
                         </div>
                         <div id="validator-tips" class="validator-tips"></div>
-                        <div class="form-center-button">
-                            <img src="captcha" title="验证码。点击更换..." alt="验证码。点击更换" onclick="newcode()" name="yzimg" id="yzimg" style="width: 20px; height: 10px">
-                            <button type="button"  name="refresh"  onclick="newcode()"  class="btn btn-primary btn-current">刷新验证码</button>
-                        </div>
                         <div id="validator-sub" class="validator-tips"></div>
                         <button type="submit" id="submit_button"  name="login" class="btn btn-primary btn-current">签   &nbsp  &nbsp  &nbsp 入</button>
                     </form>
@@ -90,12 +86,6 @@
     });
 </script>
 
-<script>
-    function newcode(){
-        var img = document.getElementById("yzimg");
-        img.src = "captcha" ;
-    }
-</script>
 <div style="text-align:center;">
 
 </div>
