@@ -1,16 +1,19 @@
 package com.sf.luckyman.controller;
 
 import com.google.code.kaptcha.Producer;
+import com.sf.luckyman.entity.Signer;
+import com.sf.luckyman.mapper.IndexMapper;
+import com.sf.luckyman.util.Util;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.imageio.ImageIO;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.util.Map;
 
 /**
  * index controller
@@ -20,6 +23,8 @@ import java.io.IOException;
 @Controller
 @RequestMapping("/luckyman")
 public class IndexController {
+    @Autowired
+    private IndexMapper indexMapper;
 
     @Autowired
     private Producer captchaProducer;
@@ -48,6 +53,10 @@ public class IndexController {
         return "/sign";
     }
 
+    @GetMapping("/done.html")
+    public String done() {
+        return "done";
+    }
 
     /**
      * 跳转到抽奖页面
@@ -56,6 +65,36 @@ public class IndexController {
     @GetMapping("/lucky.html")
     public String luckMan() {
         return "/luckyman";
+    }
+
+    @PostMapping("/sign")
+    @ResponseBody
+    public String signIn(String name, String gender, String tel, String email, String school, String major, String graduation) {
+        Signer signer = new Signer();
+        signer.setName(name);
+        signer.setGender(gender);
+        signer.setTel(tel);
+        signer.setEmail(email);
+        signer.setSchool(school);
+        signer.setMajor(major);
+        signer.setGraduation(graduation);
+        System.out.println(signer.toString());
+        try {
+            indexMapper.insertSigner(signer);
+            return Util.ok();
+        } catch (Exception e) {
+            return Util.error();
+        }
+    }
+
+    @ResponseBody
+    @GetMapping("/signer")
+    public String getSigners() {
+        try {
+            return Util.ok(indexMapper.listSigner());
+        } catch (Exception e) {
+            return Util.error();
+        }
     }
 
 }

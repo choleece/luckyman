@@ -8,6 +8,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
+import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 
 import javax.sql.DataSource;
 
@@ -19,22 +20,38 @@ import javax.sql.DataSource;
 @Configuration
 @MapperScan("com.sf.luckyman.mapper")
 public class MybatisConfig {
-    @Bean
-    public SqlSessionFactory sqlSessionFactoryBean() throws Exception {
+    private static final String MAPPER_LOCAL = "classpath:mybatis/mapper/*.xml";
 
-        SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();
-        sqlSessionFactoryBean.setDataSource(dataSource());
+    @Bean("dataSource")
+    public DruidDataSource dataSource() {
+        DruidDataSource dataSource = new DruidDataSource();
 
-        PathMatchingResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
+        dataSource.setDriverClassName("com.mysql.jdbc.Driver");
+        dataSource.setUrl("jdbc:mysql://localhost:3306/luckyman?useUnicode=true&characterEncoding=utf-8");
+        dataSource.setUsername("root");
+        dataSource.setPassword("123456");
+        dataSource.setInitialSize(10);
+        dataSource.setMinIdle(50);
+        dataSource.setMaxActive(3000);
+        dataSource.setMaxWait(60000);
 
-        sqlSessionFactoryBean.setMapperLocations(resolver
-                .getResources("classpath:mybatis/mapper/*.xml"));
-        return sqlSessionFactoryBean.getObject();
+        return dataSource;
     }
 
     @Bean
-    @ConfigurationProperties(prefix = "spring.datasource")
-    public DataSource dataSource() {
-        return new DruidDataSource();
+    public DataSourceTransactionManager dataSourceTransactionManager(DruidDataSource dataSource) {
+        return new DataSourceTransactionManager(dataSource);
+    }
+
+    @Bean
+    public SqlSessionFactory sqlSessionFactory(DruidDataSource dataSource) throws Exception {
+        return createSqlSessionFactory(dataSource, MAPPER_LOCAL);
+    }
+
+    private SqlSessionFactory createSqlSessionFactory(DataSource dataSource, String xmlMapperLocations) throws Exception {
+        SqlSessionFactoryBean sessionFactoryBean = new SqlSessionFactoryBean();
+        sessionFactoryBean.setDataSource(dataSource);
+        sessionFactoryBean.setMapperLocations((new PathMatchingResourcePatternResolver()).getResources(xmlMapperLocations));
+        return sessionFactoryBean.getObject();
     }
 }
