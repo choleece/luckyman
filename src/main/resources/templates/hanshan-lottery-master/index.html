@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>2019顺丰校园招聘</title>
-    <link rel="stylesheet" href="./css/style.css">
-    <link rel="stylesheet" href="./css/animate.css">
+    <link rel="stylesheet" href="/static/hanshan/css/style.css">
+    <link rel="stylesheet" href="/static/hanshan/css/animate.css">
 </head>
 <body>
 <!-- 顶部中国风花纹 start -->
@@ -36,7 +36,7 @@
             <a href="javascript:;" id="award04-toggle" class="more">查看更多</a>
         </div>
     </div>
-    <img src="./img/lantern.png" alt="" width="85" id="mingdan" class="switch">
+    <img src="/static/hanshan/img/lantern.png" alt="" width="85" id="mingdan" class="switch">
 </aside>
 <!--右侧奖品名单展示-->
 <aside class="aside-right">
@@ -50,7 +50,7 @@
             </div>
         </div>
     </div>
-    <img src="./img/lantern.png" alt="" width="85" id="liwu" class="switch">
+    <img src="/static/hanshan/img/lantern.png" alt="" width="85" id="liwu" class="switch">
 </aside>
 
 <!--倒计时展示-->
@@ -73,14 +73,14 @@
 
 <div class="main">
     <div class="lotterty-infogo">
-        <img src="img/logo.png">
+        <img src="/static/hanshan/img/logo.png">
     </div>
     <div id="lottery-main" class="lottery-main">
         <div class="wrap-border-main">
-            <img src="./img/wrap-border-1.png" class="wrap-border wrap-border-1">
-            <img src="./img/wrap-border-2.png" class="wrap-border wrap-border-2">
-            <img src="./img/wrap-border-3.png" class="wrap-border wrap-border-3">
-            <img src="./img/wrap-border-4.png" class="wrap-border wrap-border-4">
+            <img src="/static/hanshan/img/wrap-border-1.png" class="wrap-border wrap-border-1">
+            <img src="/static/hanshan/img/wrap-border-2.png" class="wrap-border wrap-border-2">
+            <img src="/static/hanshan/img/wrap-border-3.png" class="wrap-border wrap-border-3">
+            <img src="/static/hanshan/img/wrap-border-4.png" class="wrap-border wrap-border-4">
             <div class="wrap-border wrap-border-left"></div>
             <div class="wrap-border wrap-border-right"></div>
         </div>
@@ -109,7 +109,7 @@
     <% _.each(lottery_datas, function (item) { %>
     <div class="clearfix lottery-list" data-id="" data-namezh="<%= item.namezh %>" data-nameen="<%= item.nameen %>">
         <div class="f-l turqoise lottery-avatar">
-            <img src="./img/avatar/<%= item.nameen %>.jpg" alt="<%= item.namezh %>">
+            <img src="/static/hanshan/img/avatar/<%= item.nameen %>.jpg" alt="<%= item.namezh %>">
         </div>
         <div class="f-l lottery-content">
             <em class="beauty border-01"></em>
@@ -133,7 +133,7 @@
 <script type="text/template" id="awardcon-tpl">
     <li class="clearfix win-li">
         <div class="f-l avatar">
-            <img width="34" src="./img/avatar/{nameen}.jpg"/>
+            <img width="34" src="/static/hanshan/img/avatar/{nameen}.jpg"/>
         </div>
         <div class="f-l name">{namezh}</div>
         <a class="f-l delete" href="javascript:;">&times;</a>
@@ -150,11 +150,11 @@
     你的浏览器不支持audio标签
 </audio>
 
-<script type="text/javascript" src="./js/underscore.js"></script>
-<script type="text/javascript" src="./js/jquery.min.js"></script>
-<script type="text/javascript" src="./lottery_data.js"></script>
-<script src="js/boot-modal.js"></script>
-<script src="js/snow-plugin.js"></script>
+<script type="text/javascript" src="/static/hanshan/js/underscore.js"></script>
+<script type="text/javascript" src="/static/hanshan/js/jquery.min.js"></script>
+<script type="text/javascript" src="/static/hanshan/lottery_data.js"></script>
+<script src="/static/hanshan/js/boot-modal.js"></script>
+<script src="/static/hanshan/js/snow-plugin.js"></script>
 <!--<script type="text/javascript" src="js/Tween.js"></script>-->
 
 <script>
@@ -202,15 +202,25 @@
 
     // ---------------- 加载、渲染 滚动抽奖信息数据 ------------
     // 如果得不到数据，则从初始化数据中获取
-    if (!local_handle.get("lottery_datas")) {
-        var lottery_storage = window.localStorage.getItem('lottery_initial');
-    } else {
-        var lottery_storage = window.localStorage.getItem('lottery_datas');
-    }
-    var lottery_datas = JSON.parse(lottery_storage);
-    $('#lottery-wrap').html( _.template($('#lotterycon-tpl').html(), lottery_datas));
+    // if (!local_handle.get("lottery_datas")) {
+    //     var lottery_storage = window.localStorage.getItem('lottery_initial');
+    //     console.log("22222222222lottery_storage" + lottery_storage);
+    // } else {
+    //     var lottery_storage = window.localStorage.getItem('lottery_datas');
+    //     console.log("1111111111111111111lotterdddy_storage" + lottery_storage);
+    // }
+    // console.log("lottery_stddddorage" + lottery_storage);
+    // var lottery_datas = JSON.parse(lottery_storage);
+    //
+    // lottery_datas = [{
+    //     "nameen": "avatar20",
+    //     "namezh": "史敏",
+    //     "wish": "新年快乐，步根长无定体色厂集内白阶阶并以节口每养。"
+    // }];
+    //
+    // $('#lottery-wrap').html( _.template($('#lotterycon-tpl').html(), lottery_datas));
 
-    // ---------------- 加载、渲染 滚动抽奖信息数据 ------------
+    // ---------------- 加载、渲染 滚动抽奖信息数据 获奖人员信息 ------------
     if (local_handle.get("award_1")) {
         $('#award-01').show();
         var award1_storage = window.localStorage.getItem('award_1');
@@ -402,10 +412,6 @@
         // 得出中间的那个选中的人， 特等奖只选一个人
         var sure_index = stop_index + 4;
 
-        console.log('sure_index: ' + sure_index);
-        console.log($('#lottery-wrap .lottery-list'));
-
-
         // 移动到要到达的指定位置
         var lastStep = function() {
             time02 = nextFrame(function() {
@@ -449,8 +455,6 @@
             var lottery_name_en = $('#lottery-wrap .lottery-list').eq(index).data('nameen');
             lottery_arr.push({'namezh': lottery_name_zh, 'nameen': lottery_name_en});
         }
-
-        var lottery_name_en = $('#lottery-wrap .lottery-list').eq(sure_index).data('nameen');
 
         // 移动完剩下的尺度
         var top = 0;

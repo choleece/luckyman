@@ -838,7 +838,10 @@ footer {
 
 #bg-code {
     background-image: url("../img/code.png");
-    height: 400px;
-    width: 300px;
-    background-size: 100%;
+    background-repeat: no-repeat;
+    background-size:100% 100%;
+    -moz-background-size:100% 100%;
+    /*height: 400px;*/
+    /*width: 200px;*/
+    /*background-size: 100%;*/
 }

@@ -2,11 +2,11 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.sf.luckyman.mapper.IndexMapper" >
     <insert id="insertSigner">
-        insert into signer(name, gender, email, tel, school, major, graduation)
-        values(#{name}, #{gender}, #{email}, #{tel}, #{school}, #{major}, #{graduation})
+        insert into signer(name, gender, email, tel, school, major, graduation, nameen)
+        values(#{name}, #{gender}, #{email}, #{tel}, #{school}, #{major}, #{graduation}, #{nameen})
     </insert>
 
-    <select id="listSigner" resultType="com.sf.luckyman.entity.Signer">
-        select name, tel from signer
+    <select id="listSigner" resultType="com.sf.luckyman.entity.Lottery">
+        select name as namezh, nameen as nameen, tel as tel, school as wish from signer
     </select>
 </mapper>

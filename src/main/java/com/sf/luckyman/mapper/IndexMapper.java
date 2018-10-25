@@ -1,5 +1,6 @@
 package com.sf.luckyman.mapper;
 
+import com.sf.luckyman.entity.Lottery;
 import com.sf.luckyman.entity.Signer;
 
 import java.util.List;
@@ -11,5 +12,5 @@ public interface IndexMapper {
 
     int insertSigner(Signer signer);
 
-    List<Signer> listSigner();
+    List<Lottery> listSigner();
 }

@@ -13,7 +13,7 @@ import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
-import java.util.Map;
+import java.util.Random;
 
 /**
  * index controller
@@ -22,12 +22,17 @@ import java.util.Map;
  */
 @Controller
 @RequestMapping("/luckyman")
+@CrossOrigin
 public class IndexController {
     @Autowired
     private IndexMapper indexMapper;
 
     @Autowired
     private Producer captchaProducer;
+
+    private static final String[] AVATARS = {"avatar1", "avatar2", "avatar3", "avatar4", "avatar5", "avatar6",
+            "avatar7", "avatar8", "avatar9", "avatar10", "avatar11", "avatar12", "avatar13", "avatar14", "avatar15", "avatar16",
+            "avatar17", "avatar18", "avatar19", "avatar20"};
 
     @GetMapping("/captcha")
     public void getCaptcha(HttpServletResponse response) throws IOException {
@@ -64,7 +69,7 @@ public class IndexController {
      */
     @GetMapping("/lucky.html")
     public String luckMan() {
-        return "/luckyman";
+        return "/hanshan-lottery-master/index";
     }
 
     @PostMapping("/sign")
@@ -78,6 +83,7 @@ public class IndexController {
         signer.setSchool(school);
         signer.setMajor(major);
         signer.setGraduation(graduation);
+        signer.setNamaen(AVATARS[randomNum()]);
         System.out.println(signer.toString());
         try {
             indexMapper.insertSigner(signer);
@@ -95,6 +101,23 @@ public class IndexController {
         } catch (Exception e) {
             return Util.error();
         }
+    }
+
+    public static void main(String[] args) {
+        Random random = new Random();
+        System.out.println(random.nextInt(20));
+    }
+
+    public int randomNum() {
+        Random random = new Random();
+        int i = random.nextInt(20);
+        if (i >= 20) {
+            return 19;
+        }
+        if (i < 0) {
+            return 1;
+        }
+        return i;
     }
 
 }
