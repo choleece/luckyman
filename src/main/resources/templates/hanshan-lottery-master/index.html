@@ -118,7 +118,7 @@
             <em class="beauty border-04"></em>
             <div class="border bor-top"></div>
             <div class="border bor-bottom"></div>
-            <h3 class="content-title"> <span class="lottery-name"><%= item.namezh %></span> &nbsp;&nbsp;<span class="company">[ <%= item.nameen %> ]</span></h3>
+            <h3 class="content-title"> <span class="lottery-name"><%= item.namezh %></span> &nbsp;&nbsp;<span class="company">[ <%= item.tel %> ]</span></h3>
             <div class="content-detail">
                 <b>毕业院校：</b>
                 <span><%= item.wish %></span>
@@ -146,7 +146,7 @@
 <!--清除数据开关-->
 <a id="clear-control" href="javascript:;" data-open="1"></a>
 
-<audio id="music" loop="loop" preload="auto" src="shiji.mp3">
+<audio id="music" loop="loop" preload="auto" src="/static/hanshan/shiji.mp3">
     你的浏览器不支持audio标签
 </audio>
 
@@ -212,13 +212,14 @@
     // console.log("lottery_stddddorage" + lottery_storage);
     // var lottery_datas = JSON.parse(lottery_storage);
     //
-    // lottery_datas = [{
-    //     "nameen": "avatar20",
-    //     "namezh": "史敏",
-    //     "wish": "新年快乐，步根长无定体色厂集内白阶阶并以节口每养。"
-    // }];
-    //
-    // $('#lottery-wrap').html( _.template($('#lotterycon-tpl').html(), lottery_datas));
+    lottery_datas = [{
+        "nameen": "avatar20",
+        "namezh": "admin",
+        "tel": "13999999999",
+        "wish": '北京大学'
+    }];
+
+    $('#lottery-wrap').html( _.template($('#lotterycon-tpl').html(), lottery_datas));
 
     // ---------------- 加载、渲染 滚动抽奖信息数据 获奖人员信息 ------------
     if (local_handle.get("award_1")) {
@@ -305,12 +306,14 @@
 
     // 嗯，just go ！
     function justGo (isMove) {
+        console.log("开始跑");
         var moveDom = document.getElementById('lottery-wrap'),
             wrapDom = document.getElementById('lottery-main'),
             move_height = moveDom.offsetHeight,
             wrap_height = wrapDom.offsetHeight,
             moveTop =  moveDom.offsetTop;
             var all_size = $('#lottery-wrap .lottery-list').size();
+            console.log('all_size' + all_size);
             // 随机生成停止位置的索引
             var start_index = Math.floor(Math.random() * (all_size - 4));
             var start_top = - item_outer_height * start_index;
@@ -536,8 +539,8 @@
         canvas.height = 1300;
         var back_img = new Image();
         var avatar = new Image();
-        avatar.src = './img/avatar/'+ arr[0].nameen + '.jpg';
-        back_img.src = './img/award_'+ award +'.'+pic_format;
+        avatar.src = '/static/hanshan/img/avatar/'+ arr[0].nameen + '.jpg';
+        back_img.src = '/static/hanshan/img/award_'+ award +'.'+pic_format;
         back_img.onload = function() {
             context.drawImage(back_img, 0, 0);
 
@@ -574,6 +577,14 @@
     }
 
     $(function(){
+
+        getData();
+        setInterval(function(){
+            console.log(isStart);
+            if (!isStart) {
+                getData();
+            }
+        }, 3000);
 
         justGo(isMove);
 
