@@ -69,6 +69,7 @@ public class IndexController {
      */
     @GetMapping("/lucky.html")
     public String luckMan() {
+        System.out.println("我进抽奖页面里，，，");
         return "/hanshan-lottery-master/index";
     }
 

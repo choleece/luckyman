@@ -27,9 +27,14 @@ public class MybatisConfig {
         DruidDataSource dataSource = new DruidDataSource();
 
         dataSource.setDriverClassName("com.mysql.jdbc.Driver");
-        dataSource.setUrl("jdbc:mysql://localhost:3306/luckyman?useUnicode=true&characterEncoding=utf-8");
+//        dataSource.setUrl("jdbc:mysql://localhost:3306/luckyman?useUnicode=true&characterEncoding=utf-8");
+//        dataSource.setUsername("root");
+//        dataSource.setPassword("123456");
+
+        dataSource.setUrl("jdbc:mysql://www.brotech.club:3506/luckyman?useUnicode=true&characterEncoding=utf-8");
         dataSource.setUsername("root");
-        dataSource.setPassword("123456");
+        dataSource.setPassword("PxBLKQ2!LPBkPUMK");
+
         dataSource.setInitialSize(10);
         dataSource.setMinIdle(50);
         dataSource.setMaxActive(3000);

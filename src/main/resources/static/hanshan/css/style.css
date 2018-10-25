@@ -262,13 +262,13 @@ aside .switch {
 .wrap-border-main {
     position: absolute;
     width: 100%;
-    height: 75%;
+    height: 65%;
     z-index: -5;
 }
 .wrap-border {
     position: absolute;
-    width: 21.5rem;
-    height: 21.5rem;
+    width: 20rem;
+    height: 20rem;
     /*top: 0;*/
     /*left: 0;*/
     /*width: 100%;*/
@@ -290,14 +290,14 @@ aside .switch {
     left: 0;
     right: 0;
     bottom: 7%;
-    height: 80%;
+    height: 70%;
     width: 98.7%;
     border-left: 4.5px solid #CB141D;
 }
 .wrap-border-right {
     top: 10%;
     right: 0;
-    height: 80%;
+    height: 70%;
     width: 4.3px;
     background: #CB141D;
 }
@@ -341,8 +341,8 @@ aside .switch {
 .wrap-main {
     position: relative;
     top: 2%;
-    height: 440px;
-    height: 71%;
+    /*height: 440px;*/
+    height: 61%;
     overflow: hidden;
     /*border: 3px solid #CB141D;*/
 }
@@ -365,17 +365,17 @@ aside .switch {
 
 .lottery-list {
     position: relative;
-    margin: 0 auto 2rem auto;
+    margin: 0 auto 1rem auto;
     width: 100%;
 }
 .lottery-avatar {
-    height: 80px;
-    width: 80px;
+    height: 60px;
+    width: 60px;
     margin-left: 8rem;
     margin-top: 1.5rem;
-    -webkit-border-radius: 80px;
-    -moz-border-radius: 80px;
-    border-radius: 80px;
+    -webkit-border-radius: 60px;
+    -moz-border-radius: 60px;
+    border-radius: 60px;
     overflow: hidden;
 }
 .lottery-avatar.turqoise {
@@ -384,8 +384,8 @@ aside .switch {
     box-shadow: 0 0 0 4px white, inset 0 0 0 1px rgba(254,54,31,0.2), 0 0 0 8px rgba(254,54,31,0.9);
 }
 .lottery-avatar img {
-    width: 80px;
-    height: 80px;
+    width: 60px;
+    height: 60px;
 }
 .lottery-content {
     position: relative;
