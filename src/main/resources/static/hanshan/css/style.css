@@ -124,6 +124,11 @@ aside .switch {
 .award-main {
     margin-top: 1.5rem;
 }
+.aside-left .award-main {
+    overflow-y: auto;
+    height: 45rem;
+}
+
 #award-01,#award-02,#award-03 {
     display: none;
 }

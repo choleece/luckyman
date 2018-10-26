@@ -44,9 +44,10 @@
         <div class="btn btn-red-outline" data-toggle="modal" id="liwu-title">停止签到</div>
         <div class="award-main">
             <div class="award-con">
-                <ul class="win">
-                    <div id="bg-code"/>
-                </ul>
+                <div style="font-size: 20px;font-weight: bold; margin-top: 20px; margin-bottom: 20px; color: #FD361F" id="total-signer">
+                    签到人数：0人
+                </div>
+                <img src="/static/hanshan/img/code.png" alt="" style="width: 200px"/>
             </div>
         </div>
     </div>
@@ -63,7 +64,7 @@
     <span aria-hidden="true">&times;</span>
 </button>
 
-<div class="modal fade" id="lottery-result" role="dialog" aria-hidden="true">
+<div class="modal fade" id="lottery-result" role="dialog" aria-hidden="false">
     <div class="modal-dialog">
         <div class="modal-content" >
             <canvas id="lottery-canvas"></canvas>
