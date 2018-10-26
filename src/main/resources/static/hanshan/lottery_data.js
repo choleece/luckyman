@@ -749,19 +749,38 @@ function stopLottery() {
     var sure_index_arr = [random_idx];
     // 如果不是特等奖，其他的三类奖项均为一次开奖5人, 则上下取其二
     if (award !== 1) {
-        sure_index_arr = [random_idx, (random_idx + 1) % lottery__total, (random_idx + 2) % lottery__total, (random_idx + 3) % lottery__total, (random_idx + 4) % lottery__total];
+        if (award_log['award0'+award] >= 5) {
+            sure_index_arr = [random_idx, (random_idx + 1) % lottery__total, (random_idx + 2) % lottery__total, (random_idx + 3) % lottery__total, (random_idx + 4) % lottery__total];
+        }
+        if (0 < award_log['award0'+award] && award_log['award0'+award] < 5) {
+            for (var i = 1; i < award_log['award0'+award] + 1; i++) {
+                sure_index_arr.push((random_idx + i) % lottery__total)
+            }
+        }
     }
 
     // 中奖人数组
     var lottery_arr = [];
     for (var i = 0; i < sure_index_arr.length; i++) {
         var index = sure_index_arr[i];
-        // var lottery_name_zh = $('#lottery-wrap .lottery-list').eq(index).data('namezh');
-        // var lottery_name_en = $('#lottery-wrap .lottery-list').eq(index).data('nameen');
         var lottery_name_zh = lottery_datas[index].namezh;
         var lottery_name_en = lottery_datas[index].nameen;
-        lottery_arr.push({'namezh': lottery_name_zh, 'nameen': lottery_name_en});
+        var item = {'namezh': lottery_name_zh, 'nameen': lottery_name_en};
+        // 去重
+        var insertFlag = true;
+        for (var j = 0; j < lottery_arr.length; j++) {
+            var lo = lottery_arr[j];
+            if (lo.namezh == lottery_name_zh && lo.nameen == lottery_name_en) {
+                insertFlag = false;
+                break;
+            }
+        }
+        if (insertFlag) {
+            lottery_arr.push(item);
+        }
     }
+
+
 
     // 移动完剩下的尺度
     var top = 0;
@@ -851,29 +870,19 @@ function drawAward(award, arr, pic_format) {
         context.drawImage(back_img, 0, 0);
 
         // 绘制圆形头像
-        circleImg(context, avatar, 158, 178 , 200);
+        // circleImg(context, avatar, 158, 178 , 200);
 
         context.fillStyle = '#D9AD61';
         context.font = "bold 6rem STKaiti";
 
         if (arr.length === 1) {
-            context.fillText(arr[0].namezh, 280, 1100);
+            context.fillText(arr[0].namezh, 280, 680);
         } else {
-            var second = '', third = '';
             for (var i = 0; i < arr.length; i++) {
                 var item = arr[i];
                 console.log('i: ' + i);
-                if (i === 0) {
-                    context.fillText(item.namezh, 280, 950);
-                }
-                if (i === 1 || i === 2) {
-                    second += item.namezh + ",";
-                } else {
-                    third += item.namezh + ",";
-                }
+                context.fillText(item.namezh, 230, 500 + i * 100);
             }
-            context.fillText(second.substr(0, second.length - 1), 150, 1050);
-            context.fillText(third.substr(0, third.length - 1), 150, 1150);
         }
     };
 }
