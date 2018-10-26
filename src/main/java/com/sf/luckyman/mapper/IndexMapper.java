@@ -13,4 +13,6 @@ public interface IndexMapper {
     int insertSigner(Signer signer);
 
     List<Lottery> listSigner();
+
+    List<Signer> listSignerByMobile(String tel);
 }

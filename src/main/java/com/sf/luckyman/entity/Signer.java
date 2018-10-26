@@ -21,7 +21,7 @@ public class Signer {
 
     private String graduation;
 
-    private String namaen;
+    private String nameen;
 
     private String status;
 
@@ -97,12 +97,12 @@ public class Signer {
         this.status = status;
     }
 
-    public String getNamaen() {
-        return namaen;
+    public String getNameen() {
+        return nameen;
     }
 
-    public void setNamaen(String namaen) {
-        this.namaen = namaen;
+    public void setNameen(String nameen) {
+        this.nameen = nameen;
     }
 
     @Override
@@ -116,7 +116,7 @@ public class Signer {
                 ", school='" + school + '\'' +
                 ", major='" + major + '\'' +
                 ", graduation='" + graduation + '\'' +
-                ", namaen='" + namaen + '\'' +
+                ", nameen='" + nameen + '\'' +
                 ", status='" + status + '\'' +
                 '}';
     }

@@ -36,9 +36,13 @@ public class Util {
     }
 
     public static String error() {
+        return error("服务器开小差了...");
+    }
+
+    public static String error(String msg) {
         Result result = new Result();
         result.setCode(-1);
-        result.setMsg("服务器开小差了...");
+        result.setMsg(msg);
         return JSON.toJSONString(result);
     }
 

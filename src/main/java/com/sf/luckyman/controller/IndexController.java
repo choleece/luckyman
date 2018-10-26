@@ -13,6 +13,7 @@ import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.util.List;
 import java.util.Random;
 
 /**
@@ -84,12 +85,17 @@ public class IndexController {
         signer.setSchool(school);
         signer.setMajor(major);
         signer.setGraduation(graduation);
-        signer.setNamaen(AVATARS[randomNum()]);
+        signer.setNameen(AVATARS[randomNum()]);
         System.out.println(signer.toString());
+        List<Signer> list = indexMapper.listSignerByMobile(tel);
+        if (list != null && list.size() > 0) {
+            return Util.error("此手机号用户已签到");
+        }
         try {
             indexMapper.insertSigner(signer);
             return Util.ok();
         } catch (Exception e) {
+            e.printStackTrace();
             return Util.error();
         }
     }

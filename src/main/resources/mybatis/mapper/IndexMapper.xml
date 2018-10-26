@@ -9,4 +9,8 @@
     <select id="listSigner" resultType="com.sf.luckyman.entity.Lottery">
         select name as namezh, nameen as nameen, tel as tel, school as wish from signer
     </select>
+
+    <select id="listSignerByMobile" resultType="com.sf.luckyman.entity.Signer">
+        select id as id, name as name from signer where tel = #{tel}
+    </select>
 </mapper>

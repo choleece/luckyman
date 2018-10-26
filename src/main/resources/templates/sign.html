@@ -28,13 +28,16 @@
                 <div class="col-md-3 col-sm-8 col-centered">
                     <form id="register-form" autocomplete="off" action="" class="nice-validator n-default" novalidate>
                         <div class="form-group">
-                            <input type="text" class="form-control" id="name" name="name" placeholder="姓名" aria-required="true">
+                            <input type="text" class="form-control" id="name" name="name" placeholder="姓名" aria-required="true" maxlength="11">
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" id="gender" name="gender" placeholder="性别" autocomplete="off" aria-required="true">
+                            <select class="form-control" id="gender" name="gender">
+                                <option>男</option>
+                                <option>女</option>
+                            </select>
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" id="tel" name="tel" placeholder="电话" aria-required="true">
+                            <input type="text" class="form-control" id="tel" name="tel" placeholder="电话" aria-required="true" maxlength="11">
                         </div>
                         <div class="form-group">
                             <input type="text" class="form-control" id="email" name="email" placeholder="邮箱" aria-required="true">
@@ -46,7 +49,8 @@
                             <input type="text" class="form-control" id="major" name="major" placeholder="专业" aria-required="true">
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control" id="graduation" name="graduation" placeholder="毕业时间" aria-required="true">
+                            <label>毕业时间</label>
+                            <input type="date" class="form-control" id="graduation" name="graduation" placeholder="毕业时间" aria-required="true">
                         </div>
                         <div id="validator-tips" class="validator-tips"></div>
                         <div id="validator-sub" class="validator-tips"></div>
@@ -55,7 +59,7 @@
                 </div>
             </div>
             <div ><hr style="border:1px dotted #036"/>
-                <p size="2" color ="#ffffff">华西IT部贵州组提供|edited by choleece</p>
+                <p size="2" color ="#ffffff">华西IT部成都组提供|edited by choleece</p>
             </div>
         </div>
         <script src="/static/js/jquery.validator.min.js"></script>
