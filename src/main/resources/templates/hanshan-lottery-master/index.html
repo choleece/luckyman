@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>2019顺丰校园招聘</title>
-    <link rel="stylesheet" href="/static/hanshan/css/style.css">
-    <link rel="stylesheet" href="/static/hanshan/css/animate.css">
+    <link rel="stylesheet" href="/luckyman/static/hanshan/css/style.css">
+    <link rel="stylesheet" href="/luckyman/static/hanshan/css/animate.css">
 </head>
 <body>
 <!-- 顶部中国风花纹 start -->
@@ -36,7 +36,7 @@
             <a href="javascript:;" id="award04-toggle" class="more">查看更多</a>
         </div>
     </div>
-    <img src="/static/hanshan/img/lantern.png" alt="" width="85" id="mingdan" class="switch">
+    <img src="/luckyman/static/hanshan/img/lantern.png" alt="" width="85" id="mingdan" class="switch">
 </aside>
 <!--右侧奖品名单展示-->
 <aside class="aside-right">
@@ -47,11 +47,11 @@
                 <div style="font-size: 20px;font-weight: bold; margin-top: 20px; margin-bottom: 20px; color: #FD361F" id="total-signer">
                     签到人数：0人
                 </div>
-                <img src="/static/hanshan/img/code.png" alt="" style="width: 200px"/>
+                <img src="/luckyman/static/hanshan/img/code.png" alt="" style="width: 200px"/>
             </div>
         </div>
     </div>
-    <img src="/static/hanshan/img/lantern.png" alt="" width="85" id="liwu" class="switch">
+    <img src="/luckyman/static/hanshan/img/lantern.png" alt="" width="85" id="liwu" class="switch">
 </aside>
 
 <!--倒计时展示-->
@@ -74,14 +74,14 @@
 
 <div class="main">
     <div class="lotterty-infogo">
-        <img src="/static/hanshan/img/logo.png">
+        <img src="/luckyman/static/hanshan/img/logo.png">
     </div>
     <div id="lottery-main" class="lottery-main">
         <div class="wrap-border-main">
-            <img src="/static/hanshan/img/wrap-border-1.png" class="wrap-border wrap-border-1">
-            <img src="/static/hanshan/img/wrap-border-2.png" class="wrap-border wrap-border-2">
-            <img src="/static/hanshan/img/wrap-border-3.png" class="wrap-border wrap-border-3">
-            <img src="/static/hanshan/img/wrap-border-4.png" class="wrap-border wrap-border-4">
+            <img src="/luckyman/static/hanshan/img/wrap-border-1.png" class="wrap-border wrap-border-1">
+            <img src="/luckyman/static/hanshan/img/wrap-border-2.png" class="wrap-border wrap-border-2">
+            <img src="/luckyman/static/hanshan/img/wrap-border-3.png" class="wrap-border wrap-border-3">
+            <img src="/luckyman/static/hanshan/img/wrap-border-4.png" class="wrap-border wrap-border-4">
             <div class="wrap-border wrap-border-left"></div>
             <div class="wrap-border wrap-border-right"></div>
         </div>
@@ -110,7 +110,7 @@
     <% _.each(lottery_datas, function (item) { %>
     <div class="clearfix lottery-list" data-id="" data-namezh="<%= item.namezh %>" data-nameen="<%= item.nameen %>">
         <div class="f-l turqoise lottery-avatar">
-            <img src="/static/hanshan/img/avatar/<%= item.nameen %>.jpg" alt="<%= item.namezh %>">
+            <img src="/luckyman/static/hanshan/img/avatar/<%= item.nameen %>.jpg" alt="<%= item.namezh %>">
         </div>
         <div class="f-l lottery-content">
             <em class="beauty border-01"></em>
@@ -134,7 +134,7 @@
 <script type="text/template" id="awardcon-tpl">
     <li class="clearfix win-li">
         <div class="f-l avatar">
-            <img width="34" src="/static/hanshan/img/avatar/{nameen}.jpg"/>
+            <img width="34" src="/luckyman/static/hanshan/img/avatar/{nameen}.jpg"/>
         </div>
         <div class="f-l name">{namezh}</div>
         <a class="f-l delete" href="javascript:;">&times;</a>
@@ -147,15 +147,15 @@
 <!--清除数据开关-->
 <a id="clear-control" href="javascript:;" data-open="1"></a>
 
-<audio id="music" loop="loop" preload="auto" src="/static/hanshan/shiji.mp3">
+<audio id="music" loop="loop" preload="auto" src="/luckyman/static/hanshan/shiji.mp3">
     你的浏览器不支持audio标签
 </audio>
 
-<script type="text/javascript" src="/static/hanshan/js/underscore.js"></script>
-<script type="text/javascript" src="/static/hanshan/js/jquery.min.js"></script>
-<script src="/static/hanshan/js/boot-modal.js"></script>
-<script src="/static/hanshan/js/snow-plugin.js"></script>
-<script type="text/javascript" src="/static/hanshan/lottery_data.js"></script>
+<script type="text/javascript" src="/luckyman/static/hanshan/js/underscore.js"></script>
+<script type="text/javascript" src="/luckyman/static/hanshan/js/jquery.min.js"></script>
+<script src="/luckyman/static/hanshan/js/boot-modal.js"></script>
+<script src="/luckyman/static/hanshan/js/snow-plugin.js"></script>
+<script type="text/javascript" src="/luckyman/static/hanshan/lottery_data.js"></script>
 
 </body>
 </html>

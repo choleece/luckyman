@@ -22,7 +22,6 @@ import java.util.Random;
  * @date 2018/10/23
  */
 @Controller
-@RequestMapping("/luckyman")
 @CrossOrigin
 public class IndexController {
     @Autowired

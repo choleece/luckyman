@@ -7,7 +7,7 @@
     </insert>
 
     <select id="listSigner" resultType="com.sf.luckyman.entity.Lottery">
-        select name as namezh, nameen as nameen, tel as tel, school as wish from signer
+        select name as namezh, nameen as nameen, tel as tel, school as wish from signer where to_days(create_time) = to_days(now())
     </select>
 
     <select id="listSignerByMobile" resultType="com.sf.luckyman.entity.Signer">

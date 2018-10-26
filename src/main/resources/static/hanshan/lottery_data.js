@@ -845,8 +845,8 @@ function drawAward(award, arr, pic_format) {
     canvas.height = 1300;
     var back_img = new Image();
     var avatar = new Image();
-    avatar.src = '/static/hanshan/img/avatar/'+ arr[0].nameen + '.jpg';
-    back_img.src = '/static/hanshan/img/award_'+ award +'.'+pic_format;
+    avatar.src = '/luckyman/static/hanshan/img/avatar/'+ arr[0].nameen + '.jpg';
+    back_img.src = '/luckyman/static/hanshan/img/award_'+ award +'.'+pic_format;
     back_img.onload = function() {
         context.drawImage(back_img, 0, 0);
 
